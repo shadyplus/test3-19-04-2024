@@ -1,0 +1,4 @@
+(function(){if(Shopify.Checkout){const clientId=localStorage.getItem("trustoo_uv");const pvProId=sessionStorage.getItem("tt_pv_product_id");const checkoutToken=Shopify.Checkout.token;if(clientId!=="null"&&pvProId!=="null"){let data="";if(Shopify.checkout&&Shopify.checkout.order_id){data+=`&order_id=${Shopify.checkout.order_id}`;}
+if(checkoutToken){data+=`&checkout_token=${checkoutToken}`;}
+if(data){fetch(location.origin+
+`/apps/trustoo-proxy/api/v1/reviews/collect?client_id=${clientId}&event_category=checkout${data}`);sessionStorage.removeItem("tt_pv_product_id");}}}})();
